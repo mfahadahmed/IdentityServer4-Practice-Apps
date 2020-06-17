@@ -1,0 +1,16 @@
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\bin\Debug\netcoreapp3.1\Client.exe
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\bin\Debug\netcoreapp3.1\Client.deps.json
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\bin\Debug\netcoreapp3.1\Client.runtimeconfig.json
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\bin\Debug\netcoreapp3.1\Client.runtimeconfig.dev.json
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\bin\Debug\netcoreapp3.1\Client.dll
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\bin\Debug\netcoreapp3.1\Client.pdb
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\bin\Debug\netcoreapp3.1\IdentityModel.dll
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\obj\Debug\netcoreapp3.1\Client.csprojAssemblyReference.cache
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\obj\Debug\netcoreapp3.1\Client.AssemblyInfoInputs.cache
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\obj\Debug\netcoreapp3.1\Client.AssemblyInfo.cs
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\obj\Debug\netcoreapp3.1\Client.csproj.CoreCompileInputs.cache
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\obj\Debug\netcoreapp3.1\Client.csproj.CopyComplete
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\obj\Debug\netcoreapp3.1\Client.dll
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\obj\Debug\netcoreapp3.1\Client.pdb
+D:\Programming\.NET\Asp.NET Core & IdentityServer4\IdentityServer4 QuickStarts\quickstarts\src\Client\obj\Debug\netcoreapp3.1\Client.genruntimeconfig.cache
