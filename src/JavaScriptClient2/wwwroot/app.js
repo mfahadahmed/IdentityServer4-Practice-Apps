@@ -15,15 +15,17 @@ function log() {
 document.getElementById("login").addEventListener("click", login, false);
 document.getElementById("api-1").addEventListener("click", api1, false);
 document.getElementById("api-2").addEventListener("click", api2, false);
+document.getElementById("api-3-get1").addEventListener("click", api3_get1, false);
+document.getElementById("api-3-get2").addEventListener("click", api3_get2, false);
 document.getElementById("logout").addEventListener("click", logout, false);
 
 var config = {
-    authority: "https://localhost:6001",
+    authority: "https://localhost:5000",
     client_id: "js-client-2",
-    redirect_uri: "http://localhost:5004/callback.html",
+    redirect_uri: "http://localhost:4202/callback.html",
     response_type: "code",
-    scope: "openid profile email api2",
-    post_logout_redirect_uri: "http://localhost:5004/index.html",
+    scope: "openid profile email api2 api3.get2",
+    post_logout_redirect_uri: "http://localhost:4202/index.html",
 };
 
 var mgr = new Oidc.UserManager(config);
@@ -50,7 +52,7 @@ function api1() {
         xhr.onload = function () {
             if (xhr.status === 200) {
                 log(xhr.status, JSON.parse(xhr.responseText));
-            } else if (xhr.status === 401) {
+            } else if (xhr.status === 401 || xhr.status === 403) {
                 log(xhr.status, new Error("UnAuthorized Access to resource"));
             } else {
                 log(xhr.status, new Error("Unknown error occurred while accessing resource"));
@@ -72,7 +74,51 @@ function api2() {
         xhr.onload = function () {
             if (xhr.status === 200) {
                 log(xhr.status, JSON.parse(xhr.responseText));
-            } else if (xhr.status === 401) {
+            } else if (xhr.status === 401 || xhr.status === 403) {
+                log(xhr.status, new Error("UnAuthorized Access to resource"));
+            } else {
+                log(xhr.status, new Error("Unknown error occurred while accessing resource"));
+            }
+        }
+
+        xhr.setRequestHeader("Authorization", "Bearer " + user?.access_token);
+        xhr.send();
+    });
+}
+
+function api3_get1() {
+    mgr.getUser().then(function (user) {
+        var url = "https://localhost:8003/identity/get1";
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                log(xhr.status, JSON.parse(xhr.responseText));
+            } else if (xhr.status === 401 || xhr.status === 403) {
+                log(xhr.status, new Error("UnAuthorized Access to resource"));
+            } else {
+                log(xhr.status, new Error("Unknown error occurred while accessing resource"));
+            }
+        }
+
+        xhr.setRequestHeader("Authorization", "Bearer " + user?.access_token);
+        xhr.send();
+    });
+}
+
+function api3_get2() {
+    mgr.getUser().then(function (user) {
+        var url = "https://localhost:8003/identity/get2";
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                log(xhr.status, JSON.parse(xhr.responseText));
+            } else if (xhr.status === 401 || xhr.status === 403) {
                 log(xhr.status, new Error("UnAuthorized Access to resource"));
             } else {
                 log(xhr.status, new Error("Unknown error occurred while accessing resource"));

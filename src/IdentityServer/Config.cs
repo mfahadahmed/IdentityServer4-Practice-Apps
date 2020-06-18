@@ -22,7 +22,15 @@ namespace IdentityServer
             new ApiResource[] 
             {
                 new ApiResource("api1", "My API1"),
-                new ApiResource("api2", "My API2")
+                new ApiResource("api2", "My API2"),
+                new ApiResource("api3", "My API3")
+                {
+                    Scopes =
+                    {
+                        new Scope("api3.get1", "Get1 API1 of Resource API3"),
+                        new Scope("api3.get2", "Get2 API2 of Resource API3"),
+                    }
+                }
             };
         
         public static IEnumerable<Client> Clients =>
@@ -79,16 +87,17 @@ namespace IdentityServer
                     RequireClientSecret = false,
                     RequireConsent = false,
 
-                    RedirectUris =           { "http://localhost:5003/callback.html" },
-                    PostLogoutRedirectUris = { "http://localhost:5003/index.html" },
-                    AllowedCorsOrigins =     { "http://localhost:5003" },
+                    RedirectUris =           { "http://localhost:4201/callback.html" },
+                    PostLogoutRedirectUris = { "http://localhost:4201/index.html" },
+                    AllowedCorsOrigins =     { "http://localhost:4201" },
 
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
-                        "api1"
+                        "api1",
+                        "api3.get1"
                     }
                 },
                 // JavaScript Client 2
@@ -101,16 +110,17 @@ namespace IdentityServer
                     RequireClientSecret = false,
                     RequireConsent = false,
 
-                    RedirectUris =           { "http://localhost:5004/callback.html" },
-                    PostLogoutRedirectUris = { "http://localhost:5004/index.html" },
-                    AllowedCorsOrigins =     { "http://localhost:5004" },
+                    RedirectUris =           { "http://localhost:4202/callback.html" },
+                    PostLogoutRedirectUris = { "http://localhost:4202/index.html" },
+                    AllowedCorsOrigins =     { "http://localhost:4202" },
 
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
-                        "api2"
+                        "api2",
+                        "api3.get2"
                     }
                 },
                 // JavaScript Client 3
@@ -123,9 +133,9 @@ namespace IdentityServer
                     RequireClientSecret = false,
                     RequireConsent = false,
 
-                    RedirectUris =           { "http://localhost:5005/callback.html" },
-                    PostLogoutRedirectUris = { "http://localhost:5005/index.html" },
-                    AllowedCorsOrigins =     { "http://localhost:5005" },
+                    RedirectUris =           { "http://localhost:4203/callback.html" },
+                    PostLogoutRedirectUris = { "http://localhost:4203/index.html" },
+                    AllowedCorsOrigins =     { "http://localhost:4203" },
 
                     AllowedScopes =
                     {
@@ -133,29 +143,9 @@ namespace IdentityServer
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
                         "api1",
-                        "api2"
-                    }
-                },
-                // Angular Client 1
-                new Client
-                {
-                    ClientId = "angular-client-1",
-                    ClientName = "Angular-Client-1",
-                    AllowedGrantTypes = GrantTypes.Code,
-                    RequirePkce = true,
-                    RequireClientSecret = false,
-                    RequireConsent = false,
-
-                    RedirectUris =              {"http://localhost:4200/auth-callback"},
-                    PostLogoutRedirectUris =    {"http://localhost:4200/"},
-                    AllowedCorsOrigins =        {"http://localhost:4200"},
-
-                    AllowedScopes =
-                    {
-                        IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile,
-                        IdentityServerConstants.StandardScopes.Email,
-                        "api1"
+                        "api2",
+                        "api3.get1",
+                        "api3.get2"
                     }
                 }
             };

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -18,10 +19,10 @@ namespace API2
         {
             services.AddControllers();
 
-            services.AddAuthentication("Bearer")
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "https://localhost:6001";
+                    options.Authority = "https://localhost:5000";
                     options.RequireHttpsMetadata = false;
 
                     options.Audience = "api2";
@@ -32,7 +33,7 @@ namespace API2
                 // this defines a CORS policy called "default"
                 options.AddPolicy("default", policy =>
                 {
-                    policy.WithOrigins("http://localhost:5003", "http://localhost:5004", "http://localhost:5005", "http://localhost:4200")
+                    policy.WithOrigins("http://localhost:4201", "http://localhost:4202", "http://localhost:4203")
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });

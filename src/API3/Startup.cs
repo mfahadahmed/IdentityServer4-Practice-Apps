@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace API1
+namespace API3
 {
     public class Startup
     {
@@ -25,8 +26,20 @@ namespace API1
                     options.Authority = "https://localhost:5000";
                     options.RequireHttpsMetadata = false;
 
-                    options.Audience = "api1";
+                    options.Audience = "api3";
                 });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("api3.get1", builder =>
+                {
+                    builder.RequireScope("api3.get1");
+                });
+                options.AddPolicy("api3.get2", builder =>
+                {
+                    builder.RequireScope("api3.get2");
+                });
+            });
 
             services.AddCors(options =>
             {
@@ -43,11 +56,6 @@ namespace API1
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
             app.UseRouting();
 
             app.UseCors("default");
