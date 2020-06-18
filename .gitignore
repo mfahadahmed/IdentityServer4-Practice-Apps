@@ -353,3 +353,15 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/src/API1/obj/Debug/netcoreapp3.1/API1.assets.cache
+/src/API1/obj/Debug/netcoreapp3.1/API1.csproj.FileListAbsolute.txt
+/src/API2/obj/Debug/netcoreapp3.1/API2.assets.cache
+/src/API2/obj/Debug/netcoreapp3.1/API2.csproj.FileListAbsolute.txt
+/src/IdentityServer/obj/Debug/netcoreapp3.1/IdentityServer.assets.cache
+/src/IdentityServer/obj/Debug/netcoreapp3.1/IdentityServer.csproj.FileListAbsolute.txt
+/src/JavaScriptClient/obj/Debug/netcoreapp3.1/JavaScriptClient.assets.cache
+/src/JavaScriptClient/obj/Debug/netcoreapp3.1/JavaScriptClient.csproj.FileListAbsolute.txt
+/src/JavaScriptClient2/obj/Debug/netcoreapp3.1/JavaScriptClient2.assets.cache
+/src/JavaScriptClient2/obj/Debug/netcoreapp3.1/JavaScriptClient2.csproj.FileListAbsolute.txt
+/src/JavaScriptClient3/obj/Debug/netcoreapp3.1/JavaScriptClient3.assets.cache
+/src/JavaScriptClient3/obj/Debug/netcoreapp3.1/JavaScriptClient3.csproj.FileListAbsolute.txt
