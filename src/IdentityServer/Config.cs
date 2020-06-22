@@ -27,8 +27,9 @@ namespace IdentityServer
                 {
                     Scopes =
                     {
-                        new Scope("api3.get1", "Get1 API1 of Resource API3"),
-                        new Scope("api3.get2", "Get2 API2 of Resource API3"),
+                        new Scope("api3.get1", "Get1 scope of Resource API3"),
+                        new Scope("api3.get2", "Get2 scope of Resource API3"),
+                        new Scope("api3.default", "Default scope of Resource API3"),
                     }
                 }
             };
@@ -97,7 +98,8 @@ namespace IdentityServer
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
                         "api1",
-                        "api3.get1"
+                        "api3.get1",
+                        "api3.default"
                     }
                 },
                 // JavaScript Client 2
@@ -145,7 +147,8 @@ namespace IdentityServer
                         "api1",
                         "api2",
                         "api3.get1",
-                        "api3.get2"
+                        "api3.get2",
+                        "api3.default"
                     }
                 }
             };

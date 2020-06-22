@@ -17,6 +17,7 @@ document.getElementById("api-1").addEventListener("click", api1, false);
 document.getElementById("api-2").addEventListener("click", api2, false);
 document.getElementById("api-3-get1").addEventListener("click", api3_get1, false);
 document.getElementById("api-3-get2").addEventListener("click", api3_get2, false);
+document.getElementById("api-3-values").addEventListener("click", api3_values, false);
 document.getElementById("logout").addEventListener("click", logout, false);
 
 var config = {
@@ -24,7 +25,7 @@ var config = {
     client_id: "js-client-3",
     redirect_uri: "http://localhost:4203/callback.html",
     response_type: "code",
-    scope: "openid profile email api1 api2 api3.get1 api3.get2",
+    scope: "openid profile email api1 api2 api3.get1 api3.get2 api3.default",
     post_logout_redirect_uri: "http://localhost:4203/index.html",
 };
 
@@ -50,9 +51,9 @@ function api1() {
         xhr.open("GET", url);
 
         xhr.onload = function () {
-            if (xhr.status === 200) {
+            if (xhr.status >= 200 && xhr.status < 300) {
                 log(xhr.status, JSON.parse(xhr.responseText));
-            } else if (xhr.status === 401 || xhr.status === 403) {
+            } else if (xhr.status >= 400 && xhr.status < 500) {
                 log(xhr.status, new Error("UnAuthorized Access to resource"));
             } else {
                 log(xhr.status, new Error("Unknown error occurred while accessing resource"));
@@ -72,9 +73,9 @@ function api2() {
         xhr.open("GET", url);
 
         xhr.onload = function () {
-            if (xhr.status === 200) {
+            if (xhr.status >= 200 && xhr.status < 300) {
                 log(xhr.status, JSON.parse(xhr.responseText));
-            } else if (xhr.status === 401 || xhr.status === 403) {
+            } else if (xhr.status >= 400 && xhr.status < 500) {
                 log(xhr.status, new Error("UnAuthorized Access to resource"));
             } else {
                 log(xhr.status, new Error("Unknown error occurred while accessing resource"));
@@ -94,9 +95,9 @@ function api3_get1() {
         xhr.open("GET", url);
 
         xhr.onload = function () {
-            if (xhr.status === 200) {
+            if (xhr.status >= 200 && xhr.status < 300) {
                 log(xhr.status, JSON.parse(xhr.responseText));
-            } else if (xhr.status === 401 || xhr.status === 403) {
+            } else if (xhr.status >= 400 && xhr.status < 500) {
                 log(xhr.status, new Error("UnAuthorized Access to resource"));
             } else {
                 log(xhr.status, new Error("Unknown error occurred while accessing resource"));
@@ -115,10 +116,32 @@ function api3_get2() {
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url);
 
-        xhr.onload = function() {
-            if (xhr.status === 200) {
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
                 log(xhr.status, JSON.parse(xhr.responseText));
-            } else if (xhr.status === 401 || xhr.status === 403) {
+            } else if (xhr.status >= 400 && xhr.status < 500) {
+                log(xhr.status, new Error("UnAuthorized Access to resource"));
+            } else {
+                log(xhr.status, new Error("Unknown error occurred while accessing resource"));
+            }
+        }
+
+        xhr.setRequestHeader("Authorization", "Bearer " + user?.access_token);
+        xhr.send();
+    });
+}
+
+function api3_values() {
+    mgr.getUser().then(function (user) {
+        var url = "https://localhost:8003/values";
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                log(xhr.status, JSON.parse(xhr.responseText));
+            } else if (xhr.status >= 400 && xhr.status < 500) {
                 log(xhr.status, new Error("UnAuthorized Access to resource"));
             } else {
                 log(xhr.status, new Error("Unknown error occurred while accessing resource"));

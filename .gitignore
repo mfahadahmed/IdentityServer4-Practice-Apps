@@ -365,3 +365,4 @@ FodyWeavers.xsd
 /src/JavaScriptClient2/obj/Debug/netcoreapp3.1/JavaScriptClient2.csproj.FileListAbsolute.txt
 /src/JavaScriptClient3/obj/Debug/netcoreapp3.1/JavaScriptClient3.assets.cache
 /src/JavaScriptClient3/obj/Debug/netcoreapp3.1/JavaScriptClient3.csproj.FileListAbsolute.txt
+*.cache
