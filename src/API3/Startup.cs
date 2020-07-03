@@ -32,20 +32,20 @@ namespace API3
 
             services.AddAuthorization(options =>
             {
-                options.DefaultPolicy = new AuthorizationPolicyBuilder()
-                    .RequireAuthenticatedUser()
-                    .RequireScope("api3.default")
-                    .Build();
+                //options.DefaultPolicy = new AuthorizationPolicyBuilder()
+                //    .RequireAuthenticatedUser()
+                //    .RequireScope("api3.default")
+                //    .Build();
 
-                options.FallbackPolicy = new AuthorizationPolicyBuilder()
-                    .RequireScope("api3.default")
-                    .Build();
+                //options.FallbackPolicy = new AuthorizationPolicyBuilder()
+                //    .RequireScope("api3.default")
+                //    .Build();
 
-                options.AddPolicy("api3.get1", builder =>
+                options.AddPolicy("policy1", builder =>
                 {
                     builder.RequireScope("api3.get1");
                 });
-                options.AddPolicy("api3.get2", builder =>
+                options.AddPolicy("policy2", builder =>
                 {
                     builder.RequireScope("api3.get2");
                 });

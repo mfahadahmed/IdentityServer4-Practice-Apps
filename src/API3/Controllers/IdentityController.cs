@@ -12,14 +12,14 @@ namespace API3.Controllers
     public class IdentityController : ControllerBase
     {
         [HttpGet("get1")]
-        [Authorize("api3.get1")]
+        [Authorize(Policy = "policy1")]
         public IActionResult Get1()
         {
             return Ok(new Dictionary<string, string> { { "Message", "Get1 of API3 called" } });
         }
 
         [HttpGet("get2")]
-        [Authorize("api3.get2")]
+        [Authorize(Policy = "policy2")]
         public IActionResult Get2()
         {
             return Ok(new Dictionary<string, string> { { "Message", "Get2 of API3 called" } });

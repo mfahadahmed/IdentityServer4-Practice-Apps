@@ -40,7 +40,7 @@ namespace IdentityServer
                     new Claim("location", "somewhere")
                 }
             },
-            new TestUser{SubjectId = "88421114", Username = "fahad", Password = "fahad",
+            new TestUser{SubjectId = "88421114", Username = "fahad", Password = "password",
                 Claims =
                 {
                     new Claim(JwtClaimTypes.Name, "Fahad Ahmed"),

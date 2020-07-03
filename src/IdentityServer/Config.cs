@@ -5,6 +5,7 @@
 using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IdentityServer
 {
@@ -39,7 +40,24 @@ namespace IdentityServer
             {
                 new Client
                 {
-                    ClientId = "client",
+                    ClientId = "fahad1",
+
+                    // no interactive user, use the clientid/secret for authentication
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    AccessTokenType = AccessTokenType.Reference,
+
+                    // secret for authentication
+                    ClientSecrets =
+                    {
+                        new Secret(GetClientSecret())
+                    },
+
+                    // scopes that client has access to
+                    AllowedScopes = { "api1" },
+                },
+                new Client
+                {
+                    ClientId = "fahad2",
 
                     // no interactive user, use the clientid/secret for authentication
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
@@ -47,11 +65,11 @@ namespace IdentityServer
                     // secret for authentication
                     ClientSecrets =
                     {
-                        new Secret("secret".Sha256())
+                        new Secret(GetClientSecret())
                     },
 
                     // scopes that client has access to
-                    AllowedScopes = { "api1" }
+                    AllowedScopes = { "api2" },
                 },
                 // interactive ASP.NET Core MVC client
                 new Client
@@ -152,6 +170,14 @@ namespace IdentityServer
                     }
                 }
             };
-        
+
+        public static string GetClientSecret()
+        {
+            var secret = "4drwpqZnWkNSABp8PUNA".Sha256();
+            return secret;
+        }
+
+        public static string GetClientUserName() => TestUsers.Users.FirstOrDefault(user => user.SubjectId == "88421114").Username;
+        public static string GetClientPassword() => TestUsers.Users.FirstOrDefault(user => user.SubjectId == "88421114").Password;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -27,6 +28,18 @@ namespace API1
 
                     options.Audience = "api1";
                 });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("policy1", builder =>
+                {
+                    builder.RequireScope("api1");
+                });
+                options.AddPolicy("policy2", builder =>
+                {
+                    builder.RequireScope("api2");
+                });
+            });
 
             services.AddCors(options =>
             {

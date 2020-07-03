@@ -11,8 +11,16 @@ namespace API1.Controllers
     [Authorize]
     public class IdentityController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("get1")]
+        [Authorize(Policy = "policy1")]
         public IActionResult Get()
+        {
+            return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
+        }
+
+        [HttpGet("get2")]
+        [Authorize(Policy = "policy2")]
+        public IActionResult Get2()
         {
             return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
         }
